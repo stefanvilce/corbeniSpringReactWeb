@@ -7,19 +7,22 @@ class App extends React.Component {
 	    axios.get(url).then(response => response.data)
 	    .then((data) => {
 	      this.setState({ pages: data })
-	      console.log(this.state.pages)
+	      //console.log(this.state.pages)
+	      //console.log(this.state.testul)
 	     })
 	  }
   render() {
     return (
         <React.Fragment>
-        <h3>The list with all pages</h3>        
+        <h3>Click on the page you want to see</h3>        
 		<div>
 		{this.state.pages.map((page) => (
 		        <div key={page.id}>
-		            <h5>{ page.title }</h5>
-		            <p>{ page.subtitle }</p>
-		            <p>{ page.shortDescription }</p>
+		        	<a href={"http://localhost:9095/corbeniSpringReactWeb/holiday/"+ page.id }>
+			        	<h6>{ page.title }</h6>
+			            <p>{ page.subtitle }</p>
+			            <p>{ page.shortDescription }</p>
+			        </a>
 		        </div>
 		        ))}
 		</div>

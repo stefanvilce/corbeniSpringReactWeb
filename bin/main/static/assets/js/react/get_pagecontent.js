@@ -1,9 +1,11 @@
 class App extends React.Component {
   state = {
-    pages: null
+    title: "",
+    subtitle: ""
   }
   componentDidMount() {
-	    const url = 'http://stefan.loc:8080/page/1/en'
+	    const id = document.querySelector("#idPage").innerHTML
+	    const url = 'http://stefan.loc:8080/page/' + id + '/en'	
 	    axios.get(url).then(response => response.data).then((data) => {
 		      this.setState({   title: data.title,
 		    	  				subtitle: data.subtitle,
@@ -17,8 +19,8 @@ class App extends React.Component {
         <React.Fragment>
 		<div>	
 		        <div key="1">
-			        	<h1>{this.state.title}</h1>
-			        	<h3>{this.state.subtitle}</h3>
+			        	<h2>{this.state.title}</h2>
+			        	<h4>{this.state.subtitle}</h4>
 			        	<p>{ this.state.shortDescription }</p>
 			        	<div dangerouslySetInnerHTML={{ __html: this.state.content }}></div>
 		        </div>
